@@ -2,16 +2,24 @@
 
 Function Set-Variables
 {
- $folderpath = "C:\temp*"
+ $folderpath = "c:fso*"
  $fileTypes = "*.docx","*doc"
  $confirmConversion = $false
  $readOnly = $true
  $addToRecent = $false
- $passwordDocument = ""
- $pageCountFile = "C:\temp\fsoPageCount.csv"
+ $passwordDocument = "password"
+ $pageCountFile = "C:fsoPageCount.csv"
  $numberOfPages = 0
  Set-OutputFile
 } #end Set-Variables
+
+Function Set-OutputFile
+{
+ if(Test-Path -path $pageCountFile)
+   { Remove-Item -path $pageCountFile }
+ "name,pageCount" >> $pageCountFile
+ Get-WordDocuments
+} #end Set-OutputFile
 
 Function Get-WordDocuments
 {
@@ -34,14 +42,6 @@ Function Get-WordDocuments
  Get-pageCount
 } #end Get-WordDocuments
 
-Function Set-OutputFile
-{
- if(Test-Path -path $pageCountFile)
-   { Remove-Item -path $pageCountFile }
- "name,pageCount" >> $pageCountFile
- Get-WordDocuments
-} #end Set-OutputFile
-
 Function Get-pageCount
 {
  $wdcsv = import-csv -path $pageCountFile
@@ -51,3 +51,7 @@ Function Get-pageCount
  }
  $numberOfPages
 } #end Get-pageCount
+
+# *** Entry Point to Script ***
+
+Set-Variables
