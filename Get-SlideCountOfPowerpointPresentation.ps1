@@ -30,8 +30,8 @@ Function Get-WordDocuments
   {
    $path =  ($_.fullname).substring(0,($_.FullName).lastindexOf('.'))
    $presentation = $powerpoint.presentations.open($_.fullname, $readOnly, $untitled, $withWindow)
-   $slidesCount = $presentation.Slides.Count
-   $($_.name) + ',' + $($slidesCount)  >> $pageCountFile
+   $slideCount = $presentation.Slides.Count
+   $($_.name) + ',' + $($slideCount)  >> $pageCountFile
    $presentation.close()
   } #end Foreach-Object
  $powerpoint.Quit()
