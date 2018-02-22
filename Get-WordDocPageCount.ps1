@@ -2,7 +2,7 @@
 
 Function Set-Variables
 {
- $folderpath = "C:\temp\ReceivedEmails\Email_1\Scan_20180222_0756_Page.docx"
+ $folderpath = "C:\temp*"
  $fileTypes = "*.docx","*doc"
  $confirmConversion = $false
  $readOnly = $true
