@@ -1,5 +1,5 @@
 
- $folderpath    = "C:\temp\ReceivedEmails\*"
+ $folderpath    = 'C:\temp\ReceivedEmails\*'
  $pageCountFile = 'C:\temp\PageCount.csv'
  $fileTypes     = '*.pptx','*.ppt'
 
@@ -48,7 +48,6 @@ Function Get-pageCount
         }
     }
  $numberOfPages
- #$B['TMP_NumPages'] = $numberOfPages
 } #end Get-pageCount
 
 # *** Entry Point to Script ***
