@@ -1,0 +1,3 @@
+$path = "C:\temp"
+
+dir -Path $path "*.preview" | rename-item -newname { [io.path]::ChangeExtension($_.Name, "preview.jpg") }
