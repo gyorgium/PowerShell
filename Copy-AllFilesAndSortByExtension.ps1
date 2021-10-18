@@ -38,13 +38,11 @@
                     $DuplicatePrefix = New-Guid
                     Copy-Item -Path $File.FullName -Destination "$ExtractionDuplicatesPath\$DuplicatePrefix+$File" -Force
                 }
-
             }
         }
         # clear the list before jumping to another extension
         $FilesList.Clear()        
     }
-    
 }
 
 # copy all files
