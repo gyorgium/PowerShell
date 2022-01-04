@@ -1,15 +1,15 @@
-﻿function Copy-AllFilesByExtension {
+﻿function Copy-AllFilesAndSortByExtension {
     param (
         [Parameter(Mandatory = $true, Position = 0, HelpMessage="Folder to analyze.")]
         [string]$SourcePath,
         [array]$ExtenstionsArray = @("jpg", "jpeg", "png", "tif", "tiff", "pdf", "doc", "docx", "xls", "xlsx", "ppt", "pptx", "csv", "txt", "mp4", "mp3")
     )
+ 
+    # create list of existing files
+    $FilesList = New-Object System.Collections.Generic.List[System.Object]
     
     # iterate over all files by extention
-    foreach ($Extension in $ExtenstionsArray) {
-        # create list of existing files
-        $FilesList = New-Object System.Collections.Generic.List[System.Object]
-        
+    foreach ($Extension in $ExtenstionsArray) { 
         # get all files by extension
         Get-ChildItem -Path $SourcePath -Recurse -Filter "*.$Extension" | ForEach-Object {$FilesList.Add($_)}
 
@@ -40,10 +40,11 @@
                 }
             }
         }
+        
         # clear the list before jumping to another extension
         $FilesList.Clear()        
     }
 }
 
 # copy all files
-Copy-AllFilesByExtension
+Copy-AllFilesAndSortByExtension
